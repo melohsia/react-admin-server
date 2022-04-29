@@ -7,6 +7,7 @@ var router = express.Router();
 
 var user = require('../controller/userController')
 var file = require('../controller/fileController')
+var search = require('../controller/searchController')
 
 var app = express()
 
@@ -23,4 +24,7 @@ router.post('/fileUpload', upload.any(), file.upload)
 router.post('/mergeFiles', upload.any(), file.mergeFiles)
 router.get('/fileList', file.getFileList)
 router.get('/deleteFile', file.deleteFileByUid)
+
+//XSS攻击
+router.get('/search', search.getParameter)
 module.exports = router;
